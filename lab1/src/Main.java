@@ -15,14 +15,15 @@ public class Main {
             System.out.println("Введіть команду 2(для списку)");
             System.out.println("Введіть команду 3(для оновлення)");
             System.out.println("Введіть команду 4(для видалення)");
-            System.out.println("Введіть команду 5(щоб вийти)");
+            System.out.println("Введіть команду 5(для сортування за назвою)");
+            System.out.println("Введіть команду 6(щоб вийти)");
             String command = scanner.nextLine().trim().toLowerCase();
 
             switch (command) {
                 case "1":
-                    System.out.print("Enter title: ");
+                    System.out.print("Введіть назву: ");
                     String title = scanner.nextLine();
-                    System.out.print("Enter content: ");
+                    System.out.print("Введіть вміст: ");
                     String content = scanner.nextLine();
                     notebook.addNote(title, content);
                     break;
@@ -30,25 +31,29 @@ public class Main {
                     notebook.listNotes();
                     break;
                 case "3":
-                    System.out.print("Enter index of note to update: ");
+                    System.out.print("Введіть номер нотатки для редагування: ");
                     int updateIndex = Integer.parseInt(scanner.nextLine());
-                    System.out.print("Enter new title: ");
+                    System.out.print("Введіть нову назву: ");
                     String newTitle = scanner.nextLine();
-                    System.out.print("Enter new content: ");
+                    System.out.print("Введіть новий вміст: ");
                     String newContent = scanner.nextLine();
                     notebook.updateNote(updateIndex, newTitle, newContent);
                     break;
                 case "4":
-                    System.out.print("Enter index of note to delete: ");
+                    System.out.print("Введіть номер нотатки щоб видалити її: ");
                     int deleteIndex = Integer.parseInt(scanner.nextLine());
                     notebook.deleteNote(deleteIndex);
                     break;
                 case "5":
+                    notebook.sortNotesByTitle();
+                    break;
+
+                case "6":
                     running = false;
-                    System.out.println("Application closed.");
+                    System.out.println("Програма закрита.");
                     break;
                 default:
-                    System.out.println("Unknown command!");
+                    System.out.println("Невідома команда");
                     break;
             }
         }

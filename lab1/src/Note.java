@@ -31,6 +31,6 @@ class Note {
 
     @Override
     public String toString() {
-        return "Title: " + title + "\nContent: " + content;
+        return "нотатка: " + title + "\nвміст: " + content;
     }
 }

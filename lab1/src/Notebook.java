@@ -1,25 +1,24 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 
-
-// Клас для управління нотатками
 class Notebook {
     private List<Note> notes = new ArrayList<>();
 
     // Створення нотатки
     public void addNote(String title, String content) {
         notes.add(new Note(title, content));
-        System.out.println("Note added successfully.");
+        System.out.println("Нотатку додано.");
     }
 
     // Читання всіх нотаток
     public void listNotes() {
         if (notes.isEmpty()) {
-            System.out.println("No notes available.");
+            System.out.println("Немає нотаток.");
         } else {
             for (int i = 0; i < notes.size(); i++) {
-                System.out.println("Index: " + i + "\n" + notes.get(i) + "\n");
+                System.out.println("номер: " + i + "\n" + notes.get(i) + "\n");
             }
         }
     }
@@ -29,9 +28,9 @@ class Notebook {
         if (index >= 0 && index < notes.size()) {
             notes.get(index).setTitle(newTitle);
             notes.get(index).setContent(newContent);
-            System.out.println("Note updated successfully.");
+            System.out.println("Нотатку оновлено.");
         } else {
-            System.out.println("Invalid note index.");
+            System.out.println("Невірний номер нотатки.");
         }
     }
 
@@ -39,9 +38,15 @@ class Notebook {
     public void deleteNote(int index) {
         if (index >= 0 && index < notes.size()) {
             notes.remove(index);
-            System.out.println("Note deleted successfully.");
+            System.out.println("Нотатку видалено.");
         } else {
-            System.out.println("Invalid note index.");
+            System.out.println("Невірний номер нотатки.");
         }
+    }
+
+    // 🔽 Сортування нотаток за назвою
+    public void sortNotesByTitle() {
+        Collections.sort(notes, Comparator.comparing(Note::getTitle));
+        System.out.println("Нотатки відсортовано за назвою.");
     }
 }
