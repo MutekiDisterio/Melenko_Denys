@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 class Notebook {
     private List<Note> notes = new ArrayList<>();
@@ -49,4 +50,29 @@ class Notebook {
         Collections.sort(notes, Comparator.comparing(Note::getTitle));
         System.out.println("Нотатки відсортовано за назвою.");
     }
+
+
+
+    public void searchNotes(String query) {
+        List<Note> searchResult = new ArrayList<>();
+        for (Note note : notes) {
+            if (fieldContainsQuery(note.getTitle(), query) || fieldContainsQuery(note.getContent(), query)) {
+                searchResult.add(note);
+            }
+        }
+
+        if (searchResult.isEmpty()) {
+            System.out.println("Нічого не знайдено.");
+        } else {
+            System.out.println("Результати пошуку:");
+            for (Note note : searchResult) {
+                System.out.println(note + "\n");
+            }
+        }
+    }
+
+    private boolean fieldContainsQuery(String field, String query) {
+        return field.toLowerCase(Locale.getDefault()).contains(query.toLowerCase(Locale.getDefault()));
+    }
+
 }

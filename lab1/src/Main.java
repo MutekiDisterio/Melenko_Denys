@@ -16,7 +16,8 @@ public class Main {
             System.out.println("Введіть команду 3(для оновлення)");
             System.out.println("Введіть команду 4(для видалення)");
             System.out.println("Введіть команду 5(для сортування за назвою)");
-            System.out.println("Введіть команду 6(щоб вийти)");
+            System.out.println("Введіть команду 6(для пошуку по назві або вмісту)");
+            System.out.println("Введіть команду 7(щоб вийти)");
             String command = scanner.nextLine().trim().toLowerCase();
 
             switch (command) {
@@ -47,8 +48,13 @@ public class Main {
                 case "5":
                     notebook.sortNotesByTitle();
                     break;
-
                 case "6":
+                    System.out.print("Введіть текст для пошуку: ");
+                    String searchQuery = scanner.nextLine();
+                    notebook.searchNotes(searchQuery);
+                    break;
+
+                case "7":
                     running = false;
                     System.out.println("Програма закрита.");
                     break;
@@ -56,7 +62,7 @@ public class Main {
                     System.out.println("Невідома команда");
                     break;
             }
-        }          //ляляля
+        }
         scanner.close();
     }
 }
