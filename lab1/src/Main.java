@@ -56,7 +56,7 @@ public class Main {
                     System.out.println("Невідома команда");
                     break;
             }
-        }
+        }          //ляляля
         scanner.close();
     }
 }
