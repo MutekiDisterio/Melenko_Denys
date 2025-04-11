@@ -1,13 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
-// Головний клас
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Notebook notebook = new Notebook();
+
+        notebook.loadFromFile();
+
+
         boolean running = true;
 
         while (running) {
@@ -27,6 +28,7 @@ public class Main {
                     System.out.print("Введіть вміст: ");
                     String content = scanner.nextLine();
                     notebook.addNote(title, content);
+                    notebook.saveToFile();
                     break;
                 case "2":
                     notebook.listNotes();
@@ -39,11 +41,13 @@ public class Main {
                     System.out.print("Введіть новий вміст: ");
                     String newContent = scanner.nextLine();
                     notebook.updateNote(updateIndex, newTitle, newContent);
+                    notebook.saveToFile();
                     break;
                 case "4":
                     System.out.print("Введіть номер нотатки щоб видалити її: ");
                     int deleteIndex = Integer.parseInt(scanner.nextLine());
                     notebook.deleteNote(deleteIndex);
+                    notebook.saveToFile();
                     break;
                 case "5":
                     notebook.sortNotesByTitle();

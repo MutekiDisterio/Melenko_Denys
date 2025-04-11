@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-
-// Клас для нотаток
 class Note {
     private String title;
     private String content;
+
+    public Note() {
+        // Порожній конструктор потрібен для Gson
+    }
 
     public Note(String title, String content) {
         this.title = title;
